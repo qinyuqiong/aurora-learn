@@ -1,22 +1,36 @@
 package com.aurora.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
  * @author yuqiong
  * @date 2022/11/29
  */
+@Entity
 @Data
-@TableName("t_tag")
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "t_tag")
 public class Tag {
 
-    @TableId
+    @Id
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @GeneratedValue(generator = "system-uuid")
     private Long id;
+
     private String tagName;
+
+    @CreatedDate
     private LocalDateTime createTime;
+
+    @UpdateTimestamp
     private LocalDateTime updateTime;
 }

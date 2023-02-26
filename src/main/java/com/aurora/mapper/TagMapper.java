@@ -1,13 +1,17 @@
 package com.aurora.mapper;
 
 import com.aurora.entity.Tag;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import com.aurora.model.dto.TagAdminDTO;
+import org.mapstruct.Mapper;
+
+import java.util.List;
 
 /**
  * @author yuqiong
- * @date 2022/11/29
+ * @date 2023/2/26
  */
-@Mapper
-public interface TagMapper extends BaseMapper<Tag> {
+@Mapper(componentModel = "spring")
+public interface TagMapper {
+
+    List<TagAdminDTO> toTagAdminDtoList(List<Tag> tags);
 }
