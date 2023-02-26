@@ -2,6 +2,7 @@ package com.aurora.mapper;
 
 import com.aurora.entity.Tag;
 import com.aurora.model.dto.TagAdminDTO;
+import com.aurora.model.vo.TagVo;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -14,4 +15,6 @@ import java.util.List;
 public interface TagMapper {
 
     List<TagAdminDTO> toTagAdminDtoList(List<Tag> tags);
+
+    Tag toTag(TagVo tagVo);
 }

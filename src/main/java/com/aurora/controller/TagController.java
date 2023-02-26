@@ -62,13 +62,14 @@ public class TagController {
     @ApiOperation("添加或修改")
     @PostMapping("/save")
     public ResultVO<Void> saveOrUpdate(@Valid @RequestBody TagVo tagVo) {
+        tagService.saveOrUpdate(tagVo);
         return ResultVO.ok();
     }
 
     @ApiOperation("删除标签")
     @DeleteMapping("/delete")
-    public ResultVO<Void> deleteTag(@RequestBody List<Integer> tagIds) {
-
+    public ResultVO<Void> deleteTag(@RequestBody List<Long> tagIds) {
+        tagService.deleteTag(tagIds);
         return ResultVO.ok();
     }
 }

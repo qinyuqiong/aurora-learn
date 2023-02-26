@@ -5,6 +5,7 @@ import com.aurora.mapper.TagMapper;
 import com.aurora.model.dto.TagAdminDTO;
 import com.aurora.model.dto.TagDTO;
 import com.aurora.model.vo.ConditionVO;
+import com.aurora.model.vo.TagVo;
 import com.aurora.repository.ArticleTagRepository;
 import com.aurora.repository.TagRepository;
 import org.springframework.stereotype.Service;
@@ -20,14 +21,14 @@ import java.util.List;
 public class TagService {
     private final TagRepository tagRepository;
 
-    private final TagMapper tagMapStruct;
+    private final TagMapper tagMapper;
 
     private final ArticleTagService articleTagService;
     private final ArticleTagRepository articleTagRepository;
 
-    public TagService(TagMapper tagMapStruct, TagRepository tagRepository, ArticleTagService articleTagService,
+    public TagService(TagMapper tagMapper, TagRepository tagRepository, ArticleTagService articleTagService,
                       ArticleTagRepository articleTagRepository) {
-        this.tagMapStruct = tagMapStruct;
+        this.tagMapper = tagMapper;
         this.tagRepository = tagRepository;
         this.articleTagService = articleTagService;
         this.articleTagRepository = articleTagRepository;
@@ -69,5 +70,14 @@ public class TagService {
                         .createTime(tag.getCreateTime())
                         .articleCount(articleTagService.countTag(tag.getId()))
                         .build()).toList();
+    }
+
+    public void saveOrUpdate(TagVo tagVo) {
+        Tag tag = tagMapper.toTag(tagVo);
+        tagRepository.save(tag);
+    }
+
+    public void deleteTag(List<Long> tagIds) {
+        tagRepository.deleteAllByIdInBatch(tagIds);
     }
 }

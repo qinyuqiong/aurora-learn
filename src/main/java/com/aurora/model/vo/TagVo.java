@@ -21,7 +21,7 @@ import javax.validation.constraints.NotBlank;
 public class TagVo {
 
     @ApiModelProperty(value = "标签id(更新传入)")
-    private Integer id;
+    private Long id;
 
     @NotBlank(message = "标签不可为空")
     @ApiModelProperty(value = "标签名", required = true)
