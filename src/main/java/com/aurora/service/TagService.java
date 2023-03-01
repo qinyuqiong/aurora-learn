@@ -5,7 +5,7 @@ import com.aurora.mapper.TagMapper;
 import com.aurora.model.dto.TagAdminDTO;
 import com.aurora.model.dto.TagDTO;
 import com.aurora.model.vo.ConditionVO;
-import com.aurora.model.vo.TagVo;
+import com.aurora.model.vo.TagVO;
 import com.aurora.repository.ArticleTagRepository;
 import com.aurora.repository.TagRepository;
 import org.springframework.stereotype.Service;
@@ -72,7 +72,7 @@ public class TagService {
                         .build()).toList();
     }
 
-    public void saveOrUpdate(TagVo tagVo) {
+    public void saveOrUpdate(TagVO tagVo) {
         Tag tag = tagMapper.toTag(tagVo);
         tagRepository.save(tag);
     }

@@ -4,7 +4,7 @@ import com.aurora.model.dto.TagAdminDTO;
 import com.aurora.model.dto.TagDTO;
 import com.aurora.model.vo.ConditionVO;
 import com.aurora.model.vo.ResultVO;
-import com.aurora.model.vo.TagVo;
+import com.aurora.model.vo.TagVO;
 import com.aurora.service.TagService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -61,7 +61,7 @@ public class TagController {
 
     @ApiOperation("添加或修改")
     @PostMapping("/save")
-    public ResultVO<Void> saveOrUpdate(@Valid @RequestBody TagVo tagVo) {
+    public ResultVO<Void> saveOrUpdate(@Valid @RequestBody TagVO tagVo) {
         tagService.saveOrUpdate(tagVo);
         return ResultVO.ok();
     }

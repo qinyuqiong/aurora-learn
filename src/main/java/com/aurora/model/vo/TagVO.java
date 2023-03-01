@@ -18,7 +18,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel("标签入参")
-public class TagVo {
+public class TagVO {
 
     @ApiModelProperty(value = "标签id(更新传入)")
     private Long id;
